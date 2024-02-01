@@ -1,0 +1,47 @@
+.main-box {
+    width: 25%;
+    background-color: rgb(245, 218, 181);
+    display: inline-block;
+    margin: 3%;
+    border: 4px solid rgb(133, 126, 126);
+    border-radius: 10px;
+}
+
+.main-box:hover {
+    border: 4px solid rgb(186, 182, 182);
+    background-color: rgb(241, 230, 213);
+}
+
+.image-box {
+    height: 40%;
+    margin: 4%;
+}
+
+.image-box > img {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    transform: translate(12%, 3%);
+}
+
+.title-box {
+    font-size: 2vmax;
+    color: rgb(65, 168, 228);
+    margin-left: 2%;
+    margin-right: 2%;
+    border-bottom: 3px solid rgb(60, 60, 141);
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.characteristics-box {
+    position: relative;
+    left: 10%;
+}
+
+.characteristics-box > ul {
+    color: rgb(72, 72, 163);
+    font-size: 1.3vmax;
+    font-family: 'Times New Roman', Times, serif;
+    display: inline-block;
+}

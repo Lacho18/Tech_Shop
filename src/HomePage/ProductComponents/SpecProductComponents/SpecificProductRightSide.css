@@ -1,0 +1,36 @@
+.right-side {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    border-left: 2px solid black;
+    border-radius: 10px;
+}
+
+.charc-ul-element {
+    position: absolute;
+    font-size: 1.5vmax;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 7%;
+}
+
+.buttons-on-product {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    font-size: 1.7vmax;
+    display: inline-block;
+}
+
+.buttons-on-product > button {
+    font-size: 2vmax;
+    margin: 2%;
+    background-color: #e68a00;
+    border-radius: 10px;
+}
+
+#warranty {
+    font-size: 2vmax;
+    position: absolute;
+    top: 50%;
+}

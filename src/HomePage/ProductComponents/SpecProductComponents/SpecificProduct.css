@@ -1,0 +1,124 @@
+.spec-product-main-div {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-image: linear-gradient(to right, #0099cc, #66ccff);
+    display: inline-block;
+}
+
+.left-side {
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid black;
+    display: inline;
+}
+
+.image-slider-div {
+    width: 32%;
+    height: 28%;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    padding: 2%;
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+    }
+}
+
+.image-slider-div>img {
+    width: 90%;
+    height: 80%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.image-slider-div>button {
+    width: 15%;
+    height: 80%;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    display: block;
+    z-index: 1;
+}
+
+.image-slider-div>button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+#right {
+    top: 0;
+    right: 0;
+}
+
+#left {
+    top: 0;
+}
+
+.dots-div {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    height: 20%;
+    align-self: center;
+    padding-left: 3%;
+    border-radius: 20px;
+}
+
+.dots-div>button {
+    border-radius: 50%;
+    background-color: white;
+    width: 8.5px;
+    height: 1.2vh;
+    margin-left: 7%;
+    margin-right: 7%;
+    position: relative;
+    left: 0;
+    transform: translateX(-30%);
+    border: 2px solid transparent;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.price-div > p {
+    font-size: 1.6vmax;
+}
+
+.price-div > p > span {
+    font-weight: bold;
+    font-size: 1.9vmax;
+}
+
+.price-div > select {
+    text-align: center;
+    margin-left: 3%;
+    font-size: 1.45vmax;
+}
+
+.currency-div {
+    position: relative;
+    top: 80%;
+}
+
+.spec-product-title {
+    position: relative;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.3vmax;
+    text-align: center;
+    font-weight: bold;
+}
+

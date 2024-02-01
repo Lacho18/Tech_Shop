@@ -1,0 +1,34 @@
+.menu-filter {
+    position: fixed;
+    left: 0;
+    background-color: #3366cc;
+    height: 70%;
+    animation: ease-in 0.3s apearence;
+    top: 10%;
+}
+
+.menu-filter > ul {
+    font-size: 1.7vmax;
+    text-align: center;
+}
+
+.menu-filter > ul > li {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.menu-filter > ul > li:hover {
+    border: 1px solid white;
+}
+
+@keyframes apearence {
+    0% {
+        height: 0%;
+    }
+    
+    100% {
+        height: 70%;
+    }
+}

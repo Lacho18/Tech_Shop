@@ -1,0 +1,21 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > input {
+    margin-top: 3px;
+    margin-bottom: 25px;
+    padding: 5px;
+    font-size: 2vmax;
+}
+
+form > label, form > div > label {
+    font-size: 2.3vmax;
+    text-align: left;
+    color: #00cc00;
+}
+
+form > div > label {
+    margin-left: 18px;
+}
