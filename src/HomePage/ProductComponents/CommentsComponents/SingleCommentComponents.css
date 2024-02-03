@@ -1,0 +1,67 @@
+.comment-main-div {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 18%;
+    background-color: #ffaa80;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#commentatorName {
+    font-size: 1.7vmax;
+    text-align: left;
+    padding-left: 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#commentatorName > span {
+    font-size: 1.4vmax;
+    color: rgba(0, 0, 0, 0.6);
+    font-style: italic;
+}
+
+.comment-div {
+    width: 90%;
+    height: 60%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 5px solid #ffcc99;
+    border-radius: 7px 7px 20px 20px;
+    background-color: #efa179;
+    font-size: 1.3vmax;
+    font-family: 'Times New Roman', Times, serif;
+    overflow: auto;
+}
+
+.comment-div > p {
+    margin-left: 2%;
+}
+
+#seeMoreButton {
+    text-decoration: underline;
+    color: rgb(149, 145, 145);
+    font-size: 1.2vmax;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+@media only screen and (max-width: 767px) {
+    #commentatorName {
+        font-size: 2.5vmax;
+    }
+
+    #commentatorName > span {
+        font-size: 2.1vmax;
+    }
+
+    .comment-div {
+        font-size: 1.8vmax;
+    }
+}

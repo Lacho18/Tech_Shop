@@ -28,6 +28,15 @@
     color: red;
 }
 
+#backButton {
+    position: absolute;
+    width: 4%;
+    height: 40%;
+    font-size: 2vmax;
+    margin: 0.5%;
+    z-index: 1;
+}
+
 @media only screen and (max-width: 767px)  {
     .nav-comments {
         height: 8vh;

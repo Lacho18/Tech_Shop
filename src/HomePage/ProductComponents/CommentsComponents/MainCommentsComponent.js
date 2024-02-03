@@ -49,9 +49,15 @@ export default function MainCommentsComponent(props) {
         setProductChanged(oldData => !oldData);
     }
 
+    function backToProduct() {
+        console.log("Alooooooo");
+        navigate(`/shop/${product.type}s/${product.id}/${product.type}`);
+    }
+
     return (
         <div>
             <nav className="nav-comments">
+                <button id="backButton" onClick={backToProduct}>{"<--"}</button>
                 <div>
                     {props.isLogged ? <NavLink to="/comments/:type/:id/:value/newComment" className="nav-link">Type new comment</NavLink>
                                     : <p style={{color: "gray"}}>To add comments log in <Link to="/login">here</Link></p>}

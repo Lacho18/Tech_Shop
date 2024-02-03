@@ -1,0 +1,70 @@
+import "./SingleCommentComponents.css";
+
+export default function SingleCommentComponents(props) {
+
+    //A function that calculates how much time have passed since the comment was committed or updated
+    function calculateTime() {
+        let date = new Date(props.timestamp);
+        let currentDate = new Date();
+
+        let result = {};
+
+        let difference = currentDate - date;
+        console.log(difference)
+        let differenceInDays = difference / (1000 * 60 * 60 * 24);
+        console.log(differenceInDays);
+
+        //In case of less than a day
+        if (differenceInDays < 1) {
+            let differenseInHours = differenceInDays * 24;
+            if(differenseInHours < 1) {
+                return {
+                    type : "minutes",
+                    time : Math.floor(differenseInHours * 60)
+                };
+            }
+            else {
+                return {
+                    type : "hours",
+                    time : Math.floor(differenceInDays * 24)
+                };
+            }
+        }
+        //In case of more than a month
+        else if (differenceInDays > 30) {
+            let differenceInMonths = Math.floor(differenceInDays / 30);
+            //in case of more than years
+            if (differenceInMonths >= 12) {
+                return {
+                    type : "year",
+                    time : differenceInMonths / 12
+                };
+            }
+            else {
+                return {
+                    type : "months",
+                    time : differenceInMonths
+                };
+            }
+        }
+        //in case of less than 1 month and more than 24 hours
+        else {
+            return {
+                type : "days",
+                time : differenceInDays
+            };
+        }
+    }
+
+    let time = calculateTime();
+    //console.log(test);
+
+    return (
+        <div className="comment-main-div">
+            <p id="commentatorName">{props.username}   <span> before {time.time} {time.type}</span></p>
+            <div className="comment-div">
+                <p>{props.comment}</p>
+            </div>
+        </div>
+    );
+}
