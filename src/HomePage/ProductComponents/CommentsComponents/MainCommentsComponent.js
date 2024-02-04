@@ -69,7 +69,7 @@ export default function MainCommentsComponent(props) {
             </nav>
             <Routes>
                 <Route path="/newComment" element={<NewComment {...product} userID={props.id} onCommitment={onProductChange}/>} />
-                <Route path="/currentComments" element={<CurrentComments user={props.username} comments={product.comments}/>} />
+                <Route path="/currentComments" element={<CurrentComments user={props.username} comments={product.comments} productType={product.type} productID={product.id} />} />
             </Routes>
         </div>
     );

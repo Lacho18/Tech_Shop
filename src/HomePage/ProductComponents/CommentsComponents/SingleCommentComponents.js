@@ -10,9 +10,7 @@ export default function SingleCommentComponents(props) {
         let result = {};
 
         let difference = currentDate - date;
-        console.log(difference)
         let differenceInDays = difference / (1000 * 60 * 60 * 24);
-        console.log(differenceInDays);
 
         //In case of less than a day
         if (differenceInDays < 1) {
@@ -37,13 +35,13 @@ export default function SingleCommentComponents(props) {
             if (differenceInMonths >= 12) {
                 return {
                     type : "year",
-                    time : differenceInMonths / 12
+                    time : Math.floor(differenceInMonths / 12)
                 };
             }
             else {
                 return {
                     type : "months",
-                    time : differenceInMonths
+                    time : Math.floor(differenceInMonths)
                 };
             }
         }
@@ -51,13 +49,12 @@ export default function SingleCommentComponents(props) {
         else {
             return {
                 type : "days",
-                time : differenceInDays
+                time : Math.floor(differenceInDays)
             };
         }
     }
 
     let time = calculateTime();
-    //console.log(test);
 
     return (
         <div className="comment-main-div">

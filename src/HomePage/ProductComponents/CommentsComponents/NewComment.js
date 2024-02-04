@@ -19,6 +19,7 @@ export default function NewComment(props) {
                 },
                 body: JSON.stringify({
                     userID: props.userID,
+                    productType : props.type,
                     productID: props.id,
                     productType : props.type,
                     comment: newComment

@@ -2,43 +2,39 @@ import { useEffect, useState } from "react";
 import SingleCommentComponents from "./SingleCommentComponents";
 
 export default function CurrentComments(props) {
-    const [comments, setComments] = useState(props.comments);
+    const [comments, setComments] = useState([]);
     const [loading, IsLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [allPages, setAllPages] = useState([]);
 
     useEffect(() => {
-        let allUsersIds = [];
-        props.comments.forEach(element => {
-            allUsersIds.push(element.userID);
-        });
-        let arrayAsString = allUsersIds.join(",");
-
         async function getComments() {
-            //gets the usernames from the users that have written a specific comments
-            const response = await fetch("http://localhost:5000/comments/?usersID=" + encodeURIComponent(arrayAsString), {
+            const response = await fetch(`http://localhost:5000/comments/?pageNumber=${encodeURIComponent(JSON.stringify({ productType: props.productType, productID: props.productID, page: currentPage }))}`, {
                 method: "GET",
                 headers: {
                     'Content-type': 'application/json'
                 }
             });
             const responseData = await response.json();
+            if (responseData.allComments) {
+                let pages = Math.floor((responseData.allComments / 10) + 1);
+                let everyPage = [];
+                for(let i = 1; i <= pages; i++) {
+                    everyPage.push(i);
+                }
+                setAllPages(everyPage);
+            }
 
-            //adds the username field to the comment object
-            setComments(oldComments => {
-                let newComments = oldComments.map(commentObject => {
-                    for (let i = 0; i < responseData.length; i++) {
-                        if (responseData[i].id === commentObject.userID) {
-                            return { ...commentObject, username: responseData[i].username }
-                        }
-                    }
-                })
-
-                return newComments;
-            })
+            setComments(oldComments => responseData.comments);
         }
 
         getComments();
         IsLoading(false);
-    }, []);
+    }, [currentPage]);
+
+    function updatePage(value) {
+        setCurrentPage(value);
+    }
 
     if (loading) {
         return (
@@ -49,20 +45,20 @@ export default function CurrentComments(props) {
         if (comments.length === 0) {
             return (
                 <div className="new-comment">
-                    <p style={{textAlign: "center"}}>No comments on this product.</p>
+                    <p style={{ textAlign: "center" }}>No comments on this product.</p>
                 </div>
             );
         }
         else {
-            return (
-                <div className="new-comment" style={{ overflow: "scroll" }}>
-                    {comments.map(indexValue => {
-                        return <SingleCommentComponents {...indexValue} />
-                    })}
-
-                    {comments.length > 10 && <button id="seeMoreButton">See more</button>}
-                </div>
-            );
+        return (
+            <div className="new-comment" style={{ overflow: "scroll" }}>
+                {comments.map(indexValue => {
+                    return <SingleCommentComponents {...indexValue} />
+                })}
+                
+                {allPages.length !== 0 && allPages.map(indexValue => <button onClick={() => updatePage(indexValue)} value={indexValue}>{indexValue}</button>)}
+            </div>
+        );
         }
 
     }
