@@ -1,8 +1,10 @@
+import CurrentComments from "../ProductComponents/CommentsComponents/CurrentComments";
+
 export default function CommentsRoute() {
 
     return(
         <div>
-            CommentsRoute
+            <CurrentComments isAuthorized = {true}/>
         </div>
     );
 }

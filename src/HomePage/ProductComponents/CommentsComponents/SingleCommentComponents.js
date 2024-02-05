@@ -15,16 +15,16 @@ export default function SingleCommentComponents(props) {
         //In case of less than a day
         if (differenceInDays < 1) {
             let differenseInHours = differenceInDays * 24;
-            if(differenseInHours < 1) {
+            if (differenseInHours < 1) {
                 return {
-                    type : "minutes",
-                    time : Math.floor(differenseInHours * 60)
+                    type: "minutes",
+                    time: Math.floor(differenseInHours * 60)
                 };
             }
             else {
                 return {
-                    type : "hours",
-                    time : Math.floor(differenceInDays * 24)
+                    type: "hours",
+                    time: Math.floor(differenceInDays * 24)
                 };
             }
         }
@@ -34,24 +34,37 @@ export default function SingleCommentComponents(props) {
             //in case of more than years
             if (differenceInMonths >= 12) {
                 return {
-                    type : "year",
-                    time : Math.floor(differenceInMonths / 12)
+                    type: "year",
+                    time: Math.floor(differenceInMonths / 12)
                 };
             }
             else {
                 return {
-                    type : "months",
-                    time : Math.floor(differenceInMonths)
+                    type: "months",
+                    time: Math.floor(differenceInMonths)
                 };
             }
         }
         //in case of less than 1 month and more than 24 hours
         else {
             return {
-                type : "days",
-                time : Math.floor(differenceInDays)
+                type: "days",
+                time: Math.floor(differenceInDays)
             };
         }
+    }
+
+    async function deleteCommentHandler() {
+        const response = await fetch(`http://localhost:5000/comments/?id=${encodeURIComponent(props.commentID)}`, {
+            method: "DELETE",
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        const responseData = await response.json();
+        console.log(responseData.message);
+        props.onDeletedCommentar(props.commentID);
     }
 
     let time = calculateTime();
@@ -62,6 +75,7 @@ export default function SingleCommentComponents(props) {
             <div className="comment-div">
                 <p>{props.comment}</p>
             </div>
+            {props.isAuthorized && <button onClick={deleteCommentHandler}>X</button>}
         </div>
     );
 }

@@ -9,7 +9,7 @@ export default function ProductLine(props) {
     useEffect(() => {
         async function insideUseEffect() {
             try {
-                let response = await fetch(`http://localhost:5000/product/${props.productType}`, {
+                let response = await fetch(`http://localhost:5000/product/?type=${encodeURIComponent(props.productType)}`, {
                     method: "GET",
                     headers: {
                         'Content-type': 'application/json'
@@ -21,6 +21,11 @@ export default function ProductLine(props) {
                 }
 
                 let responseData = await response.json();
+                if(props.isAuthorized) {
+                    responseData.sort((a, b) => {
+                        return a.available - b.available;
+                    })
+                }
                 setAllProducts(responseData);
                 setLoading(false);  
             } catch (error) {
@@ -31,13 +36,17 @@ export default function ProductLine(props) {
         insideUseEffect();
     }, [props.productType]);
 
+    function deleteHandler(deletedObject) {
+        setAllProducts(oldData => oldData.filter(indexValue => indexValue.id !== deletedObject))
+    }
+
     return (
         <div className="product-line">
             {loading ? (
                 <p>Loading...</p>
             ) : (
                 allProducts.length !== 0 && allProducts.map(indexValue => {
-                    return <ProductBox data={indexValue} key={indexValue.id} />;
+                    return <ProductBox data={indexValue} key={indexValue.id} isAuthorized={props.isAuthorized}  onDelete={props.isAuthorized ? deleteHandler : null}/>;
                 })
             )}
         </div>

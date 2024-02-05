@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(to right, #0707a1, #04bf7d);
+    overflow: scroll;
 }
 
 .header {

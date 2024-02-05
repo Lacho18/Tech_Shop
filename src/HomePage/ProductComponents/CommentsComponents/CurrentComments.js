@@ -4,12 +4,12 @@ import SingleCommentComponents from "./SingleCommentComponents";
 export default function CurrentComments(props) {
     const [comments, setComments] = useState([]);
     const [loading, IsLoading] = useState(true);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1); 
     const [allPages, setAllPages] = useState([]);
 
     useEffect(() => {
         async function getComments() {
-            const response = await fetch(`http://localhost:5000/comments/?pageNumber=${encodeURIComponent(JSON.stringify({ productType: props.productType, productID: props.productID, page: currentPage }))}`, {
+            const response = await fetch(`http://localhost:5000/comments/?pageNumber=${encodeURIComponent(JSON.stringify({ productType: props.productType, productID: props.productID, page: currentPage, isAuthorized : props.isAuthorized }))}`, {
                 method: "GET",
                 headers: {
                     'Content-type': 'application/json'
@@ -25,7 +25,7 @@ export default function CurrentComments(props) {
                 setAllPages(everyPage);
             }
 
-            setComments(oldComments => responseData.comments);
+            setComments(oldComments => responseData.comments); 
         }
 
         getComments();
@@ -34,6 +34,10 @@ export default function CurrentComments(props) {
 
     function updatePage(value) {
         setCurrentPage(value);
+    }
+
+    function deleteHandler(id) {
+        setComments(oldData => oldData.filter(indexValue => indexValue.commentID !== id));
     }
 
     if (loading) {
@@ -53,7 +57,7 @@ export default function CurrentComments(props) {
         return (
             <div className="new-comment" style={{ overflow: "scroll" }}>
                 {comments.map(indexValue => {
-                    return <SingleCommentComponents {...indexValue} />
+                    return <SingleCommentComponents {...indexValue} isAuthorized={props.isAuthorized} onDeletedCommentar={deleteHandler}/>
                 })}
                 
                 {allPages.length !== 0 && allPages.map(indexValue => <button onClick={() => updatePage(indexValue)} value={indexValue}>{indexValue}</button>)}

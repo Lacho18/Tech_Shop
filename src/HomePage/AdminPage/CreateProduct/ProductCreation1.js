@@ -95,7 +95,6 @@ export default function ProductCreation() {
             //Cleares the input fields after submiting the data
             let allFields = document.getElementsByClassName("input-field");
             for (let i = 0; i < allFields.length; i++) {
-                console.log("ALOOOOO");
                 allFields[i].value = "";
                 console.log(allFields[i].value);
             }
