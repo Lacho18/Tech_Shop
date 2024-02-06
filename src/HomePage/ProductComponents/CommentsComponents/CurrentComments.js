@@ -37,7 +37,19 @@ export default function CurrentComments(props) {
     }
 
     function deleteHandler(id) {
-        setComments(oldData => oldData.filter(indexValue => indexValue.commentID !== id));
+        //setComments(oldData => oldData.filter(indexValue => indexValue.commentID !== id));
+        setComments(oldData => {
+            let newData = oldData.filter(indexValue => indexValue.commentID !== id);
+            newData = newData.map(indexValue => {
+                if(indexValue.commentID > id) {
+                    return {...indexValue, commentID : indexValue.commentID - 1};
+                }
+                else {
+                    return {...indexValue};
+                }
+            });
+            return newData;
+        });
     }
 
     if (loading) {

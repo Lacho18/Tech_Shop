@@ -50,7 +50,6 @@ export default function MainCommentsComponent(props) {
     }
 
     function backToProduct() {
-        console.log("Alooooooo");
         navigate(`/shop/${product.type}s/${product.id}/${product.type}`);
     }
 
