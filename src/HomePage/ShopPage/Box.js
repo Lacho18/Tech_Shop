@@ -22,6 +22,9 @@ export default function Box(props) {
     //Function that removes everything from the box and navigates to the payment page
     function purchaseHandler() {
         props.onPurchase();
+        /*
+            Add request that adds the product to the user purchase array!!!!!!
+        */
         navigate('/purchase');
     }
 

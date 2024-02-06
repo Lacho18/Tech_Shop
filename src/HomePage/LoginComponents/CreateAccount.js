@@ -42,12 +42,14 @@ export default function CreateAccount(props) {
         <input type="password" name="password" placeholder="Enter your password" onChange={props.setFunctions[1]} />
         <label htmlFor="confirm_password">Confirm password</label>
         <input type="password" name="confirm_password" placeholder="Confirm your password" onChange={props.setFunctions[2]} />
+        <label htmlFor="birthday">Birthday</label>
+        <input type="date" name="birthday" placeholder="Confirm your password" onChange={props.setFunctions[3]} />
         <div>
-          <input type="radio" value="male" name="gender" onChange={props.setFunctions[3]} />
+          <input type="radio" value="male" name="gender" onChange={props.setFunctions[4]} />
           <label htmlFor="gender">male</label>
         </div>
         <div>
-          <input type="radio" value="female" name="gender" onChange={props.setFunctions[3]} />
+          <input type="radio" value="female" name="gender" onChange={props.setFunctions[4]} />
           <label htmlFor="female">female</label>
         </div>
         <input type="submit" value="Sign up" />

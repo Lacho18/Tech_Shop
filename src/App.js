@@ -17,6 +17,7 @@ function App() {
       username: "",
       password: "",
       confPassword: "",
+      birthday: new Date(),
       gender: ""
     }
   );
@@ -41,6 +42,12 @@ function App() {
   function setConfigPassword(e) {
     setData(prevData => {
       return { ...prevData, confPassword: e.target.value };
+    })
+  }
+
+  function setBirthday(e) {
+    setData(prevData => {
+      return { ...prevData, birthday: e.target.value };
     })
   }
 
@@ -107,7 +114,7 @@ function App() {
         <Route path="/" element={<HomePage {...user} />} />
         <Route path="/shop/*" element={<ShopPage userInfo={user} addToCard={addToCard} />} />
         <Route path="/login" element={<Login objectData={{ username: data.username, password: data.password }} setFunctions={[setUsername, setPassword]} onLogin={LoginHandle} />} />
-        <Route path="/create" element={<CreateAccount objectData={data} setFunctions={[setUsername, setPassword, setConfigPassword, setGender]} />} />
+        <Route path="/create" element={<CreateAccount objectData={data} setFunctions={[setUsername, setPassword, setConfigPassword, setBirthday, setGender]} />} />
         <Route path="/admin/*" element={<MainComponent adminInfo={user} onBack={onBackButtonClicked} />} />
         <Route path="/card" element={<Box {...user} onPurchase={removeFromCart} />} />
         <Route path="/purchase" element={<PurchaseComponent />} />

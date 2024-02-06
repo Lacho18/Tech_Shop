@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import AdminUserView from './UsersPart/AdminUserView';
 
 export default function UsersRoute() {
     const [allUsers, setAllUsers] = useState([]);
@@ -26,7 +27,7 @@ export default function UsersRoute() {
 
     return(
         <div>
-            UsersRoute
+            {allUsers.map(user => <AdminUserView {...user}/>)}
         </div>
     );
 }
