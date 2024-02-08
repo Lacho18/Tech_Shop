@@ -20,11 +20,25 @@ export default function Box(props) {
     totalSum = getTotalSum();
 
     //Function that removes everything from the box and navigates to the payment page
-    function purchaseHandler() {
+    async function purchaseHandler() {
         props.onPurchase();
-        /*
-            Add request that adds the product to the user purchase array!!!!!!
-        */
+        let productIDs = props.box.map(item => {
+            return {id : item.id, type : item.type}
+        });
+        console.log(productIDs);
+        let response = await fetch("http://localhost:5000/purchase", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                user : props.id,
+                items : productIDs
+            })
+
+        });
+        const responseData = await response.json();
+        console.log(responseData.message);
         navigate('/purchase');
     }
 
@@ -34,14 +48,14 @@ export default function Box(props) {
     }
 
     //Checks weather there is anything in the box or not
-    if(!props.box !== undefined && props.box.length === 0) {
-        return(
+    if (!props.box !== undefined && props.box.length === 0) {
+        return (
             <div className="empty-box">
                 <p>Your box is empty!</p>
             </div>
         );
     }
-    return(
+    return (
         <div className="card-main-div">
             <p>Hello {props.username}</p>
             <p>Here are your selected products : </p>
@@ -51,7 +65,7 @@ export default function Box(props) {
                     return <BoxSide key={uniceElement} unice={uniceElement} {...element} onRemoving={onSingleRemove} />
                 })}
             </div>
-            <p>Total sum : <span style={{color : "#ff6600"}}>{totalSum}</span></p>
+            <p>Total sum : <span style={{ color: "#ff6600" }}>{totalSum}</span></p>
             <button className="purchase-button" onClick={purchaseHandler}>Purchase product{props.box.length > 1 && "s"}</button>
         </div>
     );

@@ -1,0 +1,92 @@
+.side-user-div {
+    width: 30%;
+    height: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 3%;
+    max-width: 30%;
+    max-height: 40%;
+    z-index: 1;
+}
+
+.side-user-div > * {
+    display: inline-block;
+}
+
+.user-img-div {
+    width: 30%;
+    height: 30%;
+}
+
+.user-img-div > img {
+    width: 90%;
+    height: 100%;
+}
+
+.info-1 {
+    width: 55%;
+    position: relative;
+    top: 0;
+    right: 0;
+    font-size: 1.5vmax;
+    margin-left: 5%;
+}
+
+.info-2 {
+    font-size: 1.4vmax;
+}
+
+.show-buttons > button {
+    background-color: #9966ff;
+    border: 3px solid #990099;
+    border-radius: 12px;
+    width: 90%;
+    text-align: center;
+    padding: 1%;
+    margin: 1%;
+    font-size: 1.4vmax;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.show-buttons > button:hover {
+    background-color: #ae8df0;
+    border: 3px solid #c420c4;;
+}
+
+@media only screen and (min-width: 768px) {
+    .side-user-div {
+        position: relative;
+        width: 70%;
+        height: 45%;
+        border-radius: 10px;
+        display: inline-block;
+        margin: 3%;
+    }
+
+    .side-user-div > *, .side-user-div > * > * {
+        font-size: 1.2vmax;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .side-user-div {
+        position: relative;
+        width: 80%;
+        max-width: 80%;
+    }
+
+    .side-user-div > *, .side-user-div > * > button {
+        font-size: 2.7vmax;
+    }
+}
+
+#banButton {
+    background-color: rgb(183, 28, 28);
+    position: relative;
+    border-radius: 12px;
+    padding: 1%;
+    bottom: 0%;
+    right: 0%;
+}

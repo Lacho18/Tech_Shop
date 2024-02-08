@@ -1,0 +1,32 @@
+.text-area-ban {
+    width: 90%;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    font-size: 1.5vmax;
+}
+
+.text-area-ban > textarea {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2%;
+}
+
+.buttons-ban {
+    position: relative;
+    top: 50%;
+    transform: translateY(100%);
+}
+
+.buttons-ban > button {
+    width: 30%;
+    font-size: 2.3vmax;
+    position: relative;
+    left: 50%;
+    transform: translateX(-120%);
+    margin-left: 2%;
+    margin-right: 2%;
+}

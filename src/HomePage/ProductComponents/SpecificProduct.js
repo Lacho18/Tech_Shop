@@ -23,7 +23,6 @@ export default function SpecificProduct(props) {
             });
 
             let responseData = await response.json();
-            console.log(responseData);
             setProductData(responseData);
             setLoading(true);
         }
@@ -43,8 +42,6 @@ export default function SpecificProduct(props) {
     function seeComments() {
         navigate(`/comments/${productData.type}/${productData.id}/current}`);
     }
-
-    console.log(props);
 
     if (!loading) {
         return (<div>Loading......</div>);

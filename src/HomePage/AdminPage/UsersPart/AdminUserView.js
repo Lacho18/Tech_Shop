@@ -19,29 +19,38 @@ export default function AdminUserView(props) {
     let creationDateView = `${creationDay}:${creationMonth}:${creationDate.getFullYear()}`;
 
     function showUser(value) {
-        setUserData(oldData => {
-            return { ...oldData, selected: true, value: value };
-        })
+        let data = {
+            user : props.id,
+            selected : true,
+            value : value
+        }
+        props.showData(data);
+    }
+
+    function banUserHandler() {
+        console.log(props);
+        props.banHandler(props.id);
     }
 
     return (
-        <div className="side-user-div">
+        <div className="side-user-div" style={{ border: props.role === "admin" ? "4px solid #ff9933" : "" }}>
             <div className="user-img-div">
                 <img src={UserImage} />
             </div>
-            <div>
+            <div className="info-1">
+                <p>Username : {props.username}</p>
+                <p>Role : {props.role}</p>
+            </div>
+            <div className="info-2">
                 <p>Created : {creationDateView}</p>
                 <p>Age : {yearsOld}</p>
             </div>
-            <div>
+            <div className="show-buttons">
                 <button onClick={() => { showUser("comments") }}>View comments written by {props.username}</button>
                 <button onClick={() => { showUser("purchases") }}>View products purchased by {props.username}</button>
             </div>
-            <button>Ban {props.username}</button>
+            {props.role === "user" && <button id="banButton" onClick={banUserHandler}>Ban {props.username}</button>}
 
-            {userData.selected && props.hasOwnProperty(userData.value) && (
-                <UserDataWindow data={props[userData.value]} />
-            )}
         </div>
     );
 }

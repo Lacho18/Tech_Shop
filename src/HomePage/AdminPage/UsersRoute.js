@@ -1,8 +1,16 @@
 import { useEffect, useState } from 'react';
 import AdminUserView from './UsersPart/AdminUserView';
+import UserDataWindow from "./UsersPart/UserDataWindow";
+import BanUserWindow from './UsersPart/BanUserWindow';
 
 export default function UsersRoute() {
     const [allUsers, setAllUsers] = useState([]);
+    const [userData, setUserData] = useState({
+        user : 0,
+        selected: false,
+        value: ""
+    });
+    const [banning, setBanning] = useState(0);
 
     useEffect(() => {
         async function getAllUsers() {
@@ -25,9 +33,26 @@ export default function UsersRoute() {
         getAllUsers();
     }, [])
 
+    function showData(value) {
+        setUserData(value);
+        console.log(userData);
+    }
+
+    function closeWindow() {
+        setUserData(oldData => {
+            return {...oldData, selected: false}
+        })
+    }
+
+    function Banning(id) {
+        setBanning(id);
+    }
+
     return(
-        <div>
-            {allUsers.map(user => <AdminUserView {...user}/>)}
+        <div style={{width : "100vw", height : "100vh",overflow : "scroll"}}>
+            {allUsers.map(user => <AdminUserView {...user} showData={showData} banHandler={Banning} />)}
+            {userData.selected && <UserDataWindow data={allUsers[userData.user - 1][userData.value]} type={userData.value} closeWindow={closeWindow} />}
+            {banning !== 0 && <BanUserWindow userID={allUsers[banning - 1].id} userName={allUsers[banning - 1].username}/>}
         </div>
     );
 }

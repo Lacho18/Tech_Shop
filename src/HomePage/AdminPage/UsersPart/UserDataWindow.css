@@ -1,0 +1,54 @@
+.user-data-main {
+    position: fixed;
+    width: 70vw;
+    height: 80vh;
+    background-color: #cc99ff;
+    border-radius: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    animation: ease-out 1s appearence;
+}
+
+@keyframes appearence {
+    0% {
+        width: 5vw;
+        height: 5vh;
+    }
+
+    100% {
+        width: 70vw;
+        height: 80vh;
+    }
+}
+
+#closeButton {
+    position: absolute;
+    top: 10%;
+    left: 100%;
+    transform: translate(-110%, -50%);
+    font-size: 3vmax;
+    background-color: red;
+    padding: 0.5%;
+}
+
+#title {
+    top: 7%;
+    font-size: 2vmax;
+}
+
+.user-data {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 95%;
+    height: 70%;
+    transform: translate(-50%, -50%);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.user-data > li {
+    margin-top: 1%;
+}
