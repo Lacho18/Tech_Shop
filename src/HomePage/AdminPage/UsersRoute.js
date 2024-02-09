@@ -3,7 +3,7 @@ import AdminUserView from './UsersPart/AdminUserView';
 import UserDataWindow from "./UsersPart/UserDataWindow";
 import BanUserWindow from './UsersPart/BanUserWindow';
 
-export default function UsersRoute() {
+export default function UsersRoute({adminUsername}) {
     const [allUsers, setAllUsers] = useState([]);
     const [userData, setUserData] = useState({
         user : 0,
@@ -48,11 +48,15 @@ export default function UsersRoute() {
         setBanning(id);
     }
 
+    function closeBanning() {
+        setBanning(0);
+    }
+
     return(
         <div style={{width : "100vw", height : "100vh",overflow : "scroll"}}>
             {allUsers.map(user => <AdminUserView {...user} showData={showData} banHandler={Banning} />)}
             {userData.selected && <UserDataWindow data={allUsers[userData.user - 1][userData.value]} type={userData.value} closeWindow={closeWindow} />}
-            {banning !== 0 && <BanUserWindow userID={allUsers[banning - 1].id} userName={allUsers[banning - 1].username}/>}
+            {banning !== 0 && <BanUserWindow userID={allUsers[banning - 1].id} userName={allUsers[banning - 1].username} adminUsername={adminUsername} onClose={closeBanning}/>}
         </div>
     );
 }

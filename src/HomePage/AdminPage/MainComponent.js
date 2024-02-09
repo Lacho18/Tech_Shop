@@ -19,7 +19,7 @@ export default function MainComponent(props) {
     }, []);
 
     if (props.adminInfo.isAuthorized) {
-        return (
+        return ( 
             <div className='admin-main'>
                 <Routes>
                     <Route path='/' element={<AdminNavigateHeader name = {props.adminInfo.username}/>} >
@@ -28,7 +28,7 @@ export default function MainComponent(props) {
                             <Route path=':type'/>
                         </Route>
                         <Route path='comments' element={<CommentsRoute />}></Route>
-                        <Route path='users' element={<UsersRoute />}></Route>
+                        <Route path='users' element={<UsersRoute adminUsername = {props.adminInfo.username}/>}></Route>
                     </Route>
                     <Route path='/create' element={<ProductCreation />}>
 
