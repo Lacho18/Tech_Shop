@@ -39,7 +39,7 @@ export default function BanUserWindow(props) {
                 <textarea onChange={(e) => {setReason(e.target.value)}} name="ban" placeholder="Banning reason...."></textarea>
                 {responseMessage !== "" && <p>{responseMessage}</p>}
             </div>
-            <div className="buttons-ban">
+            <div className="buttons-ban">        
                 <button onClick={banUser} style={{backgroundColor:"red"}} disabled={reason === ""}>Commit banning</button>
                 <button onClick={closeWindow} style={{backgroundColor:"green"}}>Cancel</button>
             </div>
