@@ -1,0 +1,22 @@
+.user-menus-div {
+    position: absolute;
+    top: 9vh;
+    right: 0;
+    display: inline-block;
+    width: 20%;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+}
+
+.user-menus-div > button {
+    font-size: 2.1vmax;
+    margin: 2%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    font-family: 'Times New Roman', Times, serif;
+}

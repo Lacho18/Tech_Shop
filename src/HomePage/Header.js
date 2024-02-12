@@ -3,6 +3,7 @@ import Cart from "../Images/Cart1.png";
 import Menu from "../Images/menuIcon1.jpg";
 import MenuFilter from "./ShopPage/MenuFilter";
 import SideMenu from "./ShopPage/SideMenu";
+import UserMenu from "./ShopPage/UserMenu";
 import componentsOfSideMenu from "./ShopPage/sideBarComponents";
 import "./HeaderStyle.css";
 import { useState } from "react";
@@ -13,6 +14,7 @@ let sideMenuBody = [];
 export default function Header(props) {
     const [showMenu, setShowMenu] = useState(false);
     const [sideMenu, setSideMenu] = useState("");
+    const [userMenu, setUserMenu] = useState(false);
 
     //Shows the menu buttons or hide them if they are already shown. It is called by clicking the menu button of the Header component
     function menuClickHandler() {
@@ -60,6 +62,12 @@ export default function Header(props) {
         setSideMenu("");
     }
 
+    function setUserToNull() {
+        props.setUserToNull();
+    }
+
+    console.log(userMenu);
+
     return(
         <div className="header-div">
             <button onClick={menuClickHandler}><img src={Menu} /></button>
@@ -67,11 +75,12 @@ export default function Header(props) {
             {props.box !== undefined ? props.box.length !== 0 ? <div className="products-on-card"><p>{props.box.length}</p></div> : <div></div> : <div></div>}
             {props.isLogged ? <button className="card-button"><Link to="/card"><img src={Cart} /></Link></button> 
                             : <button className="card-button"><img src={Cart} /></button>}
-            {props.isLogged && <p>Welcome {props.username}</p>}
-            <img src={UserImage} />
+            {props.isLogged && <p style={{fontSize : "1.4vmax"}}>Welcome {props.username}</p>}
+            <img src={UserImage} onClick={() => {props.username ? setUserMenu(oldDate => !oldDate) : console.log("No user")}}/>
 
             {showMenu && <MenuFilter showMenus={showHelpMenus}/>}
             {sideMenu && <SideMenu onSelection={onSelectedLink} sideMenu={sideMenuBody}/>}
+            {userMenu && <UserMenu user={props} setUserToNull={setUserToNull}/>}
         </div>
     );
 }

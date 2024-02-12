@@ -107,12 +107,16 @@ function App() {
     }
   }
 
+  function setUserToNull() {
+    setUser({});
+  }
+
 
   return (
     <div>
       <Routes>
         <Route path="/" element={<HomePage {...user} />} />
-        <Route path="/shop/*" element={<ShopPage userInfo={user} addToCard={addToCard} />} />
+        <Route path="/shop/*" element={<ShopPage userInfo={user} addToCard={addToCard} setUserToNull={setUserToNull}/>} />
         <Route path="/login" element={<Login objectData={{ username: data.username, password: data.password }} setFunctions={[setUsername, setPassword]} onLogin={LoginHandle} />} />
         <Route path="/create" element={<CreateAccount objectData={data} setFunctions={[setUsername, setPassword, setConfigPassword, setBirthday, setGender]} />} />
         <Route path="/admin/*" element={<MainComponent adminInfo={user} onBack={onBackButtonClicked} />} />

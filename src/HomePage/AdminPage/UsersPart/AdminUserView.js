@@ -13,10 +13,14 @@ export default function AdminUserView(props) {
     let year = todaysDate.getFullYear();
     let yearsOld = year - new Date(props.birthday).getFullYear();
 
+    console.log(props.acountCreation);
+
     let creationDate = new Date(props.acountCreation);
-    let creationDay = creationDate.getDay() < 10 ? "0" + creationDate.getDay() : creationDate.getDay();
+    let creationDay = creationDate.getDate() < 10 ? "0" + creationDate.getDate() : creationDate.getDate();
     let creationMonth = creationDate.getMonth() < 10 ? "0" + creationDate.getMonth() : creationDate.getMonth();
     let creationDateView = `${creationDay}:${creationMonth}:${creationDate.getFullYear()}`;
+
+    
 
     function showUser(value) {
         let data = {

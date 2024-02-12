@@ -17,6 +17,10 @@ export default function ShopPage(props) {
         props.addToCard(product);
     }
 
+    function setUserToNull() {
+        props.setUserToNull();
+    }
+
     return (
         <div className="shop-main-div">
 
@@ -32,7 +36,7 @@ export default function ShopPage(props) {
             </Routes>
 
             <header className="header" style={{ position: "fixed" }}>
-                <Header {...props.userInfo} />
+                <Header {...props.userInfo} setUserToNull={setUserToNull}/>
             </header>
             <main className="main">
                 {/*showMenu && <MenuFilter showMenus={showHelpMenus} />*/}
