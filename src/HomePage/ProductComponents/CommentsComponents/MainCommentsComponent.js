@@ -22,7 +22,6 @@ export default function MainCommentsComponent(props) {
     }
 
     useEffect(() => {
-        console.log("Kashkaval");
         async function getProduct() {
             const response = await fetch(`http://localhost:5000/product/single/${urlData.id}/${urlData.type}`, {
                 method: "GET",
@@ -68,7 +67,7 @@ export default function MainCommentsComponent(props) {
             </nav>
             <Routes>
                 <Route path="/newComment" element={<NewComment {...product} userID={props.id} onCommitment={onProductChange}/>} />
-                <Route path="/currentComments" element={<CurrentComments user={props.username} comments={product.comments} productType={product.type} productID={product.id} />} />
+                <Route path="/currentComments" element={<CurrentComments user={props.username} currentUserID={props.id} comments={product.comments} productType={product.type} productID={product.id} />} />
             </Routes>
         </div>
     );

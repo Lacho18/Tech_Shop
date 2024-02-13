@@ -7,6 +7,8 @@ export default function CurrentComments(props) {
     const [currentPage, setCurrentPage] = useState(1); 
     const [allPages, setAllPages] = useState([]);
 
+    console.log(props);
+
     useEffect(() => {
         async function getComments() {
             const response = await fetch(`http://localhost:5000/comments/?pageNumber=${encodeURIComponent(JSON.stringify({ productType: props.productType, productID: props.productID, page: currentPage, isAuthorized : props.isAuthorized }))}`, {
@@ -69,7 +71,7 @@ export default function CurrentComments(props) {
         return (
             <div className="new-comment" style={{ overflow: "scroll" }}>
                 {comments.map(indexValue => {
-                    return <SingleCommentComponents {...indexValue} isAuthorized={props.isAuthorized} onDeletedCommentar={deleteHandler}/>
+                    return <SingleCommentComponents {...indexValue} isAuthorized={props.isAuthorized} idOfCurrentUser={props.currentUserID}  onDeletedCommentar={deleteHandler}/>
                 })}
                 
                 {allPages.length !== 0 && allPages.map(indexValue => <button onClick={() => updatePage(indexValue)} value={indexValue}>{indexValue}</button>)}

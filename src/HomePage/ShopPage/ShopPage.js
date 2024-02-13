@@ -12,7 +12,7 @@ let sideMenuBody = [];
 const allTypes = ["laptop", "computer", "phone", "tablet", "monitor", "disk", "TV", "camera"];
 
 export default function ShopPage(props) {
-    //sends selected product to App.js
+    //sends selected product to App.js 
     function toCard(product) {
         props.addToCard(product);
     }

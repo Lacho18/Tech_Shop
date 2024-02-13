@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./SingleCommentComponents.css";
 
 export default function SingleCommentComponents(props) {
+    const [redactArea, setRedactArea] = useState(false);
+    //const [currentComment, setCurrentComment] = useState(props.comment);
 
     //A function that calculates how much time have passed since the comment was committed or updated
     function calculateTime() {
@@ -63,19 +66,54 @@ export default function SingleCommentComponents(props) {
         });
 
         const responseData = await response.json();
-        console.log(responseData.message);
         props.onDeletedCommentar(props.commentID);
+    }
+
+    async function redactComment() {
+        setRedactArea(true);
+    }
+
+    async function updateComment() {
+        let correctedComment = document.getElementById("correctComment");
+        console.log(correctedComment.value);
+        if(correctedComment.value !== "" && correctedComment.value !== props.comment) {
+            let data = {
+                commentID : props.commentID,
+                correctedComment : correctedComment.value
+            }
+            let response = await fetch(`http://localhost:5000/comments/?data=${encodeURIComponent(JSON.stringify(data))}`, {
+            method: "PUT",
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+        }
     }
 
     let time = calculateTime();
 
     return (
         <div className="comment-main-div">
+            {((props.idOfCurrentUser && props.userID === props.idOfCurrentUser) || props.isAuthorized) &&
+            <div className="">
+                    <button onClick={redactComment}>🖊</button>
+                    <button onClick={deleteCommentHandler}>🗑</button>
+                </div>
+            }
             <p id="commentatorName">{props.username}   <span> before {time.time} {time.type}</span></p>
             <div className="comment-div">
                 <p>{props.comment}</p>
             </div>
             {props.isAuthorized && <button onClick={deleteCommentHandler}>X</button>}
+
+            {redactArea && 
+                <div>
+                    <p>Correct your comment : </p>
+                    <textarea id="correctComment">{props.comment}</textarea>
+                    <button onClick={updateComment}>Confirm</button>
+                    <button onClick={() => {redactArea && setRedactArea(false)}}>Cancel</button>
+                </div>
+            }
         </div>
     );
 }

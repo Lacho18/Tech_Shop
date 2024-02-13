@@ -66,8 +66,6 @@ export default function Header(props) {
         props.setUserToNull();
     }
 
-    console.log(userMenu);
-
     return(
         <div className="header-div">
             <button onClick={menuClickHandler}><img src={Menu} /></button>
