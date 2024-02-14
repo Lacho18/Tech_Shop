@@ -12,6 +12,8 @@ let sideMenuBody = [];
 const allTypes = ["laptop", "computer", "phone", "tablet", "monitor", "disk", "TV", "camera"];
 
 export default function ShopPage(props) {
+    const [searchText, setSearchText] = useState("");
+
     //sends selected product to App.js 
     function toCard(product) {
         props.addToCard(product);
@@ -21,6 +23,10 @@ export default function ShopPage(props) {
         props.setUserToNull();
     }
 
+    function searching(text) {
+        setSearchText(text);
+    }
+
     return (
         <div className="shop-main-div">
 
@@ -28,7 +34,7 @@ export default function ShopPage(props) {
                 {allTypes.map(type => {
                     return (
                         <Route path={`${type}s`}>
-                            <Route index element={<ProductLine productType={type} />} />
+                            <Route index element={<ProductLine productType={type} searchRegex={searchText}/>} />
                             <Route path=":id/:type" element={<SpecificProduct {...props.userInfo} toCard={toCard} />} />
                         </Route>
                     );
@@ -36,7 +42,7 @@ export default function ShopPage(props) {
             </Routes>
 
             <header className="header" style={{ position: "fixed" }}>
-                <Header {...props.userInfo} setUserToNull={setUserToNull}/>
+                <Header {...props.userInfo} setUserToNull={setUserToNull} searching={searching}/>
             </header>
             <main className="main">
                 {/*showMenu && <MenuFilter showMenus={showHelpMenus} />*/}

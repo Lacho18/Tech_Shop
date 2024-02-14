@@ -66,10 +66,14 @@ export default function Header(props) {
         props.setUserToNull();
     }
 
+    function searchHandler(e) {
+        props.searching(e.target.value);
+    }
+
     return(
         <div className="header-div">
             <button onClick={menuClickHandler}><img src={Menu} /></button>
-            <input type="text" placeholder="🔍 Search" />
+            <input type="text" placeholder="🔍 Search" onChange={searchHandler}/>
             {props.box !== undefined ? props.box.length !== 0 ? <div className="products-on-card"><p>{props.box.length}</p></div> : <div></div> : <div></div>}
             {props.isLogged ? <button className="card-button"><Link to="/card"><img src={Cart} /></Link></button> 
                             : <button className="card-button"><img src={Cart} /></button>}

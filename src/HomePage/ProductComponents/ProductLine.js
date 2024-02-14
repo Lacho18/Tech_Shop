@@ -32,13 +32,33 @@ export default function ProductLine(props) {
                 console.error('Error fetching data:', error);
             }
         }
-
-        insideUseEffect();
-    }, [props.productType]);
+        if(props.searchRegex === "") {
+            insideUseEffect();
+        }
+        else {
+            searchBarHandler();
+        }
+    }, [props.productType, props.searchRegex]);
 
     function deleteHandler(deletedObject) {
         setAllProducts(oldData => oldData.filter(indexValue => indexValue.id !== deletedObject))
     }
+
+    //Filters the products by their brand written in the search input field on Header component
+    function searchBarHandler() {
+        console.log(props.searchRegex);
+        if(props.searchRegex !== "") {
+            const regex = new RegExp(props.searchRegex, 'i');
+
+            const fileteredProducts = allProducts.filter(product => {
+                return regex.test(product.brand);
+            });
+
+            setAllProducts(fileteredProducts);
+        }
+    }
+
+    //searchBarHandler();
 
     return (
         <div className="product-line">
