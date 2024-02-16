@@ -20,7 +20,8 @@ export default function ProductCreation() {
         comments: [],
         price: -1,
         available: -1,
-        buyed: 0
+        buyed: 0,
+        isNew : false
     })
 
     async function onOptionSelection(option) {

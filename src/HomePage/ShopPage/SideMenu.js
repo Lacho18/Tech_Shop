@@ -14,7 +14,7 @@ export default function SideMenu(props) {
                     {indexValue.menus.map(menu => {
                         let path = indexValue.title;
                         path = path.toLowerCase();
-                        return <li><Link onClick={linkClickHandle} to={`/shop/${path}`} className="links-side-menu">{menu}</Link></li>
+                        return <li><Link onClick={linkClickHandle} to={`/shop/${path}/${menu}`} className="links-side-menu">{menu}</Link></li>
                     })}
                 </ul>
             })}

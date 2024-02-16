@@ -21,7 +21,7 @@ export default function ProductsRoute() {
             </nav>
 
             <Routes>
-                <Route path={`${type}`} element={<ProductLine productType={type} isAuthorized={true}/>} />
+                <Route path={`${type}`} element={<ProductLine productType={type} isAuthorized={true} searchRegex={null}/>} />
             </Routes>
 
             <Link className='add-product' to="/admin/create">Add product +</Link>

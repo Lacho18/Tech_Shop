@@ -33,7 +33,7 @@ export default function ShopPage(props) {
             <Routes>
                 {allTypes.map(type => {
                     return (
-                        <Route path={`${type}s`}>
+                        <Route path={`${type}s/:requestType`}>
                             <Route index element={<ProductLine productType={type} searchRegex={searchText}/>} />
                             <Route path=":id/:type" element={<SpecificProduct {...props.userInfo} toCard={toCard} />} />
                         </Route>
