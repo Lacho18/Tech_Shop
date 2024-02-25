@@ -10,7 +10,7 @@ export default function AskWindow(props) {
             reason : null
         };
 
-        let response = await fetch("http://localhost:5000/login/?banData=" +encodeURIComponent(JSON.stringify(data)), {
+        let response = await fetch("http://localhost:5000/user/?banData=" +encodeURIComponent(JSON.stringify(data)), {
             method : "DELETE",
             headers : {
                 'Content-type': 'application/json'

@@ -25,6 +25,7 @@ export default function CurrencyComponent(props) {
     return (
         <div className="price-div">
             <p>Price: <span>{currentCurrency.price} {currentCurrency.symbol}</span></p>
+            {/*<p>Select your currency</p>*/}
             <select value={currentCurrency.currency} onChange={changePrice}>
                 {props.allCurrencies.map(indexValue => {
                     return <option key={indexValue.currency}>{indexValue.currency}</option>

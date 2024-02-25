@@ -21,6 +21,7 @@ export default function ProductLine(props) {
                 let response = await fetch(`http://localhost:5000/product/?data=${encodeURIComponent(JSON.stringify(data))}`, {
                     method: "GET",
                     headers: {
+                        'Authorization': `${localStorage.getItem('token')}`,
                         'Content-type': 'application/json'
                     }
                 });

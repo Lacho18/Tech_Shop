@@ -14,13 +14,13 @@ export default function Login(props) {
     async function LoginSubmitHandler(e) {
         e.preventDefault();
 
+
         try {
-            let response = await fetch('http://localhost:5000/login', {
-                method: "POST",
+            let response = await fetch('http://localhost:5000/user/?data='+encodeURIComponent(JSON.stringify(props.objectData)), {
+                method: "GET",
                 headers: {
                     'Content-type': 'application/json'
-                },
-                body: JSON.stringify(props.objectData)
+                }
             });
 
             let responseData = await response.json();
@@ -28,6 +28,8 @@ export default function Login(props) {
 
             if (responseData.message === "Success") {
                 props.onLogin(responseData);
+                console.log(responseData.token);
+                localStorage.setItem('token', responseData.token);
                 navigate('/');
             }
             else if(responseData.message === "You have been banned!") {

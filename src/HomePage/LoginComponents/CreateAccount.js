@@ -10,7 +10,7 @@ export default function CreateAccount(props) {
     e.preventDefault();
 
     try {
-      let response = await fetch('http://localhost:5000/create', {
+      let response = await fetch('http://localhost:5000/user', {
         method: "POST",
         headers: {
           'Content-type': 'application/json'

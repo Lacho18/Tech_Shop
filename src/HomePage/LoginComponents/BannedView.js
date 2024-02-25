@@ -3,7 +3,7 @@ import "./BannedView.css";
 export default function BannedView(props) {
 
     async function confirmFunction() {
-        let response = await fetch("http://localhost:5000/login/?id=" +encodeURIComponent(props.info.id), {
+        let response = await fetch("http://localhost:5000/user/?id=" +encodeURIComponent(props.info.id), {
             method : "PUT",
             headers : {
                 'Content-type': 'application/json'
