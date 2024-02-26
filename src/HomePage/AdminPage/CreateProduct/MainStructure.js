@@ -3,11 +3,10 @@ const structure = {
     model : "",
     titleImage : "",
     images : [],
-    //characteristics : Object,
     warranty : 0,
     price : 0,
     available : 0,
-    isNew : false
+    isNew : false      
 }
 
 export default structure;

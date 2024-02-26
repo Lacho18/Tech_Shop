@@ -36,7 +36,7 @@ export default function Login(props) {
                 setBanWindow({
                     active : true,
                     data : responseData.data
-                })
+                });
             }
             else {
                 if(responseData.message) {
