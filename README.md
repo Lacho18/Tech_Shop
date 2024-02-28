@@ -69,3 +69,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### React-routes
+React Router is a popular library for handling routing and navigation in React applications. It enables developers to create single-page applications (SPAs) where different components are rendered based on the URL, providing a smooth and dynamic user experience similar to traditional multi-page applications.
+
+### `npm install react-router-dom` to install the library
