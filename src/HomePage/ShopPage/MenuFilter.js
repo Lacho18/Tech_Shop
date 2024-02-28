@@ -1,7 +1,6 @@
 import React from "react";
 import "./MenuFilter.css";
 
-//export default function MenuFilter(props) {
 const MenuFilter = ((props) => {
 
     function mouseOverHandler(value) {

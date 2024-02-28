@@ -11,7 +11,6 @@ export default function SpecificProduct(props) {
     const { id, type } = useParams();
     const [productData, setProductData] = useState({});
     const [loading, setLoading] = useState(false);
-    //const [currentValute, setCurrentValute] = useState({});
 
     useEffect(() => {
         async function getSpecificProduct() {

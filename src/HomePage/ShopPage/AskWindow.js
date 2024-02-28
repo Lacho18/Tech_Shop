@@ -19,7 +19,7 @@ export default function AskWindow(props) {
         
         let responseData = await response.json();
         console.log(responseData.message);
-
+        
         navigate("/");
     }
 

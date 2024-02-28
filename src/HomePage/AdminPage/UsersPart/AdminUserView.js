@@ -1,26 +1,15 @@
 import "./AdminUserView.css";
 import UserImage from "../../../Images/UserImage1.png";
-import UserDataWindow from "./UserDataWindow";
-import { useState } from "react";
 
 export default function AdminUserView(props) {
-    const [userData, setUserData] = useState({
-        selected: false,
-        value: ""
-    });
-
     let todaysDate = new Date();
     let year = todaysDate.getFullYear();
     let yearsOld = year - new Date(props.birthday).getFullYear();
-
-    console.log(props.acountCreation);
 
     let creationDate = new Date(props.acountCreation);
     let creationDay = creationDate.getDate() < 10 ? "0" + creationDate.getDate() : creationDate.getDate();
     let creationMonth = creationDate.getMonth() < 10 ? "0" + creationDate.getMonth() : creationDate.getMonth();
     let creationDateView = `${creationDay}:${creationMonth}:${creationDate.getFullYear()}`;
-
-    
 
     function showUser(value) {
         let data = {
@@ -32,7 +21,6 @@ export default function AdminUserView(props) {
     }
 
     function banUserHandler() {
-        console.log(props);
         props.banHandler(props.id);
     }
 

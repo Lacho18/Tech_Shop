@@ -9,8 +9,6 @@ export default function ProductLine(props) {
 
     const { requestType } = useParams();
 
-    console.log(requestType);
-
     useEffect(() => {
         async function insideUseEffect() {
             let data = {
@@ -36,9 +34,7 @@ export default function ProductLine(props) {
                         return a.available - b.available;
                     })
                 }
-                console.log(responseData);
                 setAllProducts(responseData);
-                console.log("Tyka");
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);

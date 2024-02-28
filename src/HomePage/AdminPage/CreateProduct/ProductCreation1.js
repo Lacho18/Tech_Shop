@@ -73,8 +73,6 @@ export default function ProductCreation() {
                 return prevProduct;
             })
         }
-
-        //console.log(product);
     }
 
     async function productSubmition(e) {
@@ -89,7 +87,6 @@ export default function ProductCreation() {
         });
 
         let responseData = await response.json();
-        console.log(responseData.message);
         setErrorMessage(responseData.message);
 
         if (responseData.status) {

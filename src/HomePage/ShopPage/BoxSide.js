@@ -1,3 +1,4 @@
+//function that sets randomised colors to the background of the text
 export default function BoxSide(props) {
     function randomColor(type) {
         let color, red = 0, green = 0, blue = 0;

@@ -25,7 +25,6 @@ export default function ProductCreation() {
     } 
 
     function pushToArray(component) {
-        console.log(component);
         setArray(oldArray => {
             oldArray.push(component);
             return oldArray;

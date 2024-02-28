@@ -19,7 +19,6 @@ export default function ProductBox(props) {
             });
 
             const responseData = await response.json();
-            console.log(responseData.message);
             props.onDelete(id);
         }
     }

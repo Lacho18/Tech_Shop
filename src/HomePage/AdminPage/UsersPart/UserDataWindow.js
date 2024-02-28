@@ -1,8 +1,6 @@
 import "./UserDataWindow.css";
 
 export default function UserDataWindow(props) {
-    console.log(props.data);
-
     function onClose() {
         props.closeWindow();
     }

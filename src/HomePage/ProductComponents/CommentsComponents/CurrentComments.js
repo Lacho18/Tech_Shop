@@ -9,6 +9,7 @@ export default function CurrentComments(props) {
 
     useEffect(() => {
         async function getComments() {
+            //A request that gets 10 comments depending on the number of the page
             const response = await fetch(`http://localhost:5000/comments/?pageNumber=${encodeURIComponent(JSON.stringify({ productType: props.productType, productID: props.productID, page: currentPage, isAuthorized : props.isAuthorized }))}`, {
                 method: "GET",
                 headers: {
@@ -37,7 +38,6 @@ export default function CurrentComments(props) {
     }
 
     function deleteHandler(id) {
-        //setComments(oldData => oldData.filter(indexValue => indexValue.commentID !== id));
         setComments(oldData => {
             let newData = oldData.filter(indexValue => indexValue.commentID !== id);
             newData = newData.map(indexValue => {

@@ -10,9 +10,11 @@ export default function Box(props) {
     //Function that calculates the whole sum from every product in the cart
     function getTotalSum() {
         let result = 0;
-        props.box.forEach(element => {
-            result += element.price;
-        });
+        if(props.box.length > 0) {
+            props.box.forEach(element => {
+                result += element.price;
+            });
+        }
 
         return result;
     }
@@ -25,7 +27,8 @@ export default function Box(props) {
         let productIDs = props.box.map(item => {
             return {id : item.id, type : item.type}
         });
-        console.log(productIDs);
+
+        //sends a request that decrements the available value of the products and add this product to the user purchases array
         let response = await fetch("http://localhost:5000/purchase", {
             method: "POST",
             headers: {
@@ -38,7 +41,6 @@ export default function Box(props) {
 
         });
         const responseData = await response.json();
-        console.log(responseData.message);
         navigate('/purchase');
     }
 

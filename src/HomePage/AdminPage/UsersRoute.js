@@ -35,7 +35,6 @@ export default function UsersRoute({adminUsername}) {
 
     function showData(value) {
         setUserData(value);
-        console.log(userData);
     }
 
     function closeWindow() {

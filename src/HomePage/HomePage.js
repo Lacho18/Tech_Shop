@@ -3,6 +3,7 @@ import Logo from "../Images/Logo1.png";
 import "./HomePageStyle.css";
 import "./LoginComponents/FormStyle.css";
 
+//The main page navigation menu
 export default function HomePage(props) {
     let styleObject = {
         webkitBackgroundClip : "text" ,
@@ -23,7 +24,7 @@ export default function HomePage(props) {
                         <Link to="/login">Log in</Link>
                     </li>
                     <li style={{background : "linear-gradient(to right, #6699ff, #4d4dff)", ...styleObject}}>
-                    <Link to="/create">Sign up</Link>
+                        <Link to="/create">Sign up</Link>
                     </li>
                 </ul>
             </nav>

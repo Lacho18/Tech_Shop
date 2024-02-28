@@ -22,7 +22,6 @@ function App() {
     }
   );
 
-  //default {user : "", isLogged : false}
   const [user, setUser] = useState({});
 
   //const [isAuthorized, setAuthorized] = useState(false);
@@ -58,13 +57,12 @@ function App() {
   }
 
   function LoginHandle(userToSet) {
-    setUser(prevValue => {
+    setUser(() => {
       return { ...userToSet, isLogged: true, isAuthorized: userToSet.role === "admin" ? true : false };
     });
   }
 
   function onBackButtonClicked() {
-    console.log("BACK TO HOME PAGE!");
     navigate('/');
   }
 
@@ -72,7 +70,6 @@ function App() {
   function addToCard(product) {
     if (user.isLogged) {
       setUser(oldData => {
-        //oldData.box.push(product);
         return {...oldData, box: [...oldData.box, product]};
       });
     }
@@ -81,7 +78,6 @@ function App() {
   //Empty the box atribute of the user. Can only be called on purchase or removing from the cart
   function removeFromCart(id) {
     if (id) {
-      console.log(user);
       let index = 1;
       while(true) {
         if(index === id) {

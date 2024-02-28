@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Routes, Route, Link, useParams } from 'react-router-dom';
 import ProductLine from '../ProductComponents/ProductLine';
-import SpecificProduct from '../ProductComponents/SpecificProduct';
 
 export default function ProductsRoute() {
     let { type } = useParams();

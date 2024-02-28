@@ -15,7 +15,6 @@ export default function AdminNavigateHeader(props) {
                 <Link to="users">Users</Link>
             </nav>
 
-            {/*<button onClick={backClickedHandler}>Back</button>*/}
             <Outlet />
         </div>
     );

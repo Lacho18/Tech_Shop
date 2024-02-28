@@ -10,7 +10,7 @@ export default function CurrencyComponent(props) {
         let current = props.allCurrencies.find(indexValue => indexValue.currency === selectedPrice);
 
 
-        setCurrentCurrency(oldObject => {
+        setCurrentCurrency(() => {
             let newPrice = props.price / current.coefficient;
             let newObject = {
                 price: newPrice.toFixed(2),
@@ -25,7 +25,6 @@ export default function CurrencyComponent(props) {
     return (
         <div className="price-div">
             <p>Price: <span>{currentCurrency.price} {currentCurrency.symbol}</span></p>
-            {/*<p>Select your currency</p>*/}
             <select value={currentCurrency.currency} onChange={changePrice}>
                 {props.allCurrencies.map(indexValue => {
                     return <option key={indexValue.currency}>{indexValue.currency}</option>

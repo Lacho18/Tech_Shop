@@ -24,7 +24,6 @@ export default function Login(props) {
             });
 
             let responseData = await response.json();
-            console.log(responseData);
 
             if (responseData.message === "Success") {
                 props.onLogin(responseData);
